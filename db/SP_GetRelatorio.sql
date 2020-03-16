@@ -1,8 +1,8 @@
-/*CALL `caol`.`SP_GetRelatorio`('carlos.arruda', '2007-01-19');*/
-DELIMITER $$ 
-CREATE PROCEDURE SP_GetRelatorio (
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_GetRelatorio`(
   IN _co_usuario VARCHAR(45),
-  IN _data_emissao VARCHAR(30)
+  IN _date_start VARCHAR(30),
+  IN _date_end VARCHAR(30)
 )
 BEGIN 
 	SELECT  sum((f.valor - (f.valor * f.total_imp_inc) / 100)) as RECEITA_LIQUIDA, s.brut_salario as CUSTO_FIJO,   
@@ -21,7 +21,7 @@ BEGIN
 		AND ps.in_ativo = 'S' 
 		AND ps.co_tipo_usuario IN (0,1,2) 
 		AND u.co_usuario = _co_usuario
-		AND  data_emissao = _data_emissao;
+		AND  data_emissao BETWEEN _date_start AND _date_end;
 
-END$$ 
-DELIMITER ; 
+END$$
+DELIMITER ;

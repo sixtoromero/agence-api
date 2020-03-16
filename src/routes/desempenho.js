@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 
@@ -18,18 +19,39 @@ router.get('/consultoresAll', (req, res) => {
     });
 });
 
-router.get('/consultores/:co_usuario/:data_emissao', (req, res) => {
-  
-  //const {co_usuario, data_emissao} = req.body;
-  const { co_usuario, data_emissao } = req.params;
+router.get('/relatorio/:co_usuario/:date', (req, res) => {
+    
+  const { co_usuario, date } = req.params;
   
   console.log('co_usuario', co_usuario);
-  console.log('data_emissao', data_emissao);
+  console.log('date', date);  
 
   const query = `
     CALL SP_GetRelatorio(?, ?);
   `
-  mysqlConnection.query(query, [co_usuario, data_emissao], (err, rows, fields) => {
+  mysqlConnection.query(query, [co_usuario, date], (err, rows, fields) => {
+    if (err) {
+      console.log(err);
+    }
+
+    res.json(rows[0]);
+
+  });
+});
+
+router.get('/consultores/:co_usuario/:date_start/:date_end', (req, res) => {
+  
+  //const {co_usuario, data_emissao} = req.body;
+  const { co_usuario, date_start, date_end } = req.params;
+  
+  console.log('co_usuario', co_usuario);
+  console.log('date_start', date_start);
+  console.log('date_end', date_end);
+
+  const query = `
+    CALL SP_GetRelatorioBetween(?, ?, ?);
+  `
+  mysqlConnection.query(query, [co_usuario, date_start, date_end], (err, rows, fields) => {
     if (err) {
       console.log(err);
     }
