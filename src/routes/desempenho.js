@@ -5,6 +5,12 @@ const router = express.Router();
 const mysqlConnection  = require('../database.js');
 
 
+router.get('/', (req, res) => {
+  res.json({
+    message: 'Estoy adentro.'
+  });
+});
+
 router.get('/consultoresAll', (req, res) => {
     
     //let sql = 'SELECT  u.co_usuario, u.no_usuario FROM  CAO_USUARIO u INNER JOIN PERMISSAO_SISTEMA p ON u.co_usuario = p.co_usuario WHERE p.co_sistema = 1 AND p.in_ativo = "S" AND P.co_tipo_usuario IN (0,1,2)'
