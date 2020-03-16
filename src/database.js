@@ -8,12 +8,17 @@ const mysql = require('mysql');
     database: 'caol'
 });*/
 
+//mysql://b3c99f7dabe4d1:c469fb22@us-cdbr-iron-east-04.cleardb.net/heroku_14d779aa1e89abe?reconnect=true
 
+//host: us-cdbr-iron-east-04.cleardb.net
+//user: b3c99f7dabe4d1
+//password: c469fb22
+//database: heroku_14d779aa1e89abe
 const mysqlConnection = mysql.createConnection({
     host: 'us-cdbr-iron-east-04.cleardb.net',
     user: 'b3c99f7dabe4d1',
     password: 'c469fb22',
-    port: 3306,
+    //port: 3306,
     database: 'heroku_14d779aa1e89abe'
 });
 
