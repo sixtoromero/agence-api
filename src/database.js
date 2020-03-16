@@ -1,19 +1,13 @@
 const mysql = require('mysql');
 
-
-/*const mysqlConnection = mysql.createConnection({
+const mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '***51x70.j053',
     database: 'caol'
-});*/
+});
 
-//mysql://b3c99f7dabe4d1:c469fb22@us-cdbr-iron-east-04.cleardb.net/heroku_14d779aa1e89abe?reconnect=true
-
-//host: us-cdbr-iron-east-04.cleardb.net
-//user: b3c99f7dabe4d1
-//password: c469fb22
-//database: heroku_14d779aa1e89abe
+/*
 const mysqlConnection = mysql.createConnection({
     host: 'us-cdbr-iron-east-04.cleardb.net',
     user: 'b3c99f7dabe4d1',
@@ -21,7 +15,7 @@ const mysqlConnection = mysql.createConnection({
     //port: 3306,
     database: 'heroku_14d779aa1e89abe'
 });
-
+*/
 
 
 mysqlConnection.connect(function (err) {
